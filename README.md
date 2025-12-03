@@ -1,6 +1,27 @@
 
 # CineRecommender: Personalized Movie Recommendation System
 
+--- ### IF YOU'RE A TEAM MEMBER, PLEASE TAKE A LOOK AT THESE ###
+
+#### DOCUMENTATION : 
+
+- https://github.com/prakharporwal2404/movie-recommender/blob/main/documentation.pdf
+
+#### PRESENTATION : 
+
+- https://github.com/prakharporwal2404/movie-recommender/blob/main/CineRecommender%20Project%20Presentation.pdf
+
+#### QUESTIONS : 
+
+- https://github.com/prakharporwal2404/movie-recommender/blob/main/project-questions.pdf
+
+#### MEMBER SPECIFIC QUESTIONS : 
+
+- https://github.com/prakharporwal2404/movie-recommender/blob/main/project-team.pdf
+
+
+
+---
 ## 1. Project Overview and Goals
 
 ### 1.1. Introduction
