@@ -1,7 +1,7 @@
 
 # CineRecommender: Personalized Movie Recommendation System
 
---- ### IF YOU'RE A TEAM MEMBER, PLEASE TAKE A LOOK AT THESE ###
+## IF YOU'RE A TEAM MEMBER, PLEASE TAKE A LOOK AT THESE ###
 
 #### DOCUMENTATION : 
 
