@@ -1,0 +1,77 @@
+{% extends "movies/base.html" %}
+{% load static %}
+
+{% block title %}Home | CineRecommender{% endblock %}
+
+{% block content %}
+
+<!-- User Greeting / Personalized Recommendations Banner -->
+    <div class="container-fluid py-5">
+        {% if user.is_authenticated %}
+            <h1 class="display-5 fw-bold text-white">Welcome back, {{ user.username }}!</h1>
+            <p class="fs-4 text-white-50">Explore your personalized recommendations tailored to your mood and genres.</p>
+        {% else %}
+            <h1 class="display-5 fw-bold text-white">Find Your Next Obsession.</h1>
+            <p class="fs-4 text-white-50">Sign up or log in to get personalized movie recommendations!</p>
+            <a href="{% url 'register' %}" class="btn btn-primary btn-lg mt-3 me-3">
+                <i class="fas fa-user-plus me-2"></i>Start Watching
+            </a>
+            <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg mt-3">
+                <i class="fas fa-sign-in-alt me-2"></i>Login
+            </a>
+        {% endif %}
+    </div>
+
+
+
+<!-- 2. Trending Movies Section - FIXED -->
+<hr class="my-5 border-secondary">
+<h2 class="mb-4 text-white"><i class="fas fa-fire text-primary me-2"></i>Currently Trending</h2>
+<p class="text-white-50 mb-4">See what other users are watching right now.</p>
+
+<div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4">
+    {% for movie in trending %}
+    <div class="col">
+        <div class="card h-100 shadow-lg">
+
+                        {% with poster_url=movie.poster_url|default:'' %}
+                        <a href="{% url 'movie_detail' movie.pk %}"><img src="{% if poster_url %}{{ poster_url }}{% else %}{% static "images/placeholder.jpg" %}{% endif %}"
+                             class="card-img-top movie-poster"
+                             alt="{{ movie.title }} Poster"
+                             style="height: 350px; object-fit: cover;"
+                             onerror="this.onerror=null;this.src='{% static "images/placeholder.jpg" %}'"></a>
+                    {% endwith %}
+            <div class="card-body">
+               <h6 class="card-title fw-bold text-truncate text-white">{{ movie.title }}</h6>
+                        <p class="card-text smaller text-white mb-0">
+                            <i class="fas fa-calendar-alt me-1"></i>{{ movie.year|default:"N/A" }}
+                            <span class="mx-1">|</span>
+                            <i class="fas fa-star text-warning me-1"></i>
+                            {% if movie.initial_rating %}
+                                {{ movie.initial_rating|floatformat:1 }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-white-50">No trending movies found.</p>
+    {% endfor %}
+</div>
+
+<!-- 3. Browse by Genre -->
+<hr class="my-5 border-secondary">
+
+<h2 class="mb-4 text-white"><i class="fas fa-tags text-primary me-2"></i>Browse by Genre</h2>
+<div class="d-flex flex-wrap gap-3">
+    {% for genre in genres %}
+    <a href="{% url 'genre_movies' genre_name=genre %}" class="btn btn-outline-primary rounded-pill px-4 py-2 text-white-50 border-white-50 transition-colors duration-200"
+       style="--bs-btn-border-color: #4A5568; --bs-btn-hover-border-color: #DC3545; --bs-btn-hover-color: #FFF;">
+        {{ genre }}
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

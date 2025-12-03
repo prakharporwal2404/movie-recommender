@@ -1,0 +1,132 @@
+{% extends "movies/base.html" %}
+{% load static %}
+
+{% block title %}{{ movie.title }} Details{% endblock %}
+
+{% block content %}
+<style>
+    /* Styling for the technical analysis panel */
+    .analysis-panel {
+        background-color: #1a1a2e; /* Deep purple/blue dark background */
+        border: 2px solid #58a6ff;
+        box-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
+    }
+    .vector-display {
+        background-color: #0d1117;
+        color: #38c438; /* Green terminal text */
+        overflow-x: auto;
+        font-family: monospace;
+    }
+    .score-highlight {
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: #58a6ff;
+        text-shadow: 0 0 5px rgba(88, 166, 255, 0.7);
+    }
+    /* Removed .help-icon CSS */
+</style>
+
+<div class="row">
+    <!-- Left Column: Movie Information -->
+    <div class="col-lg-7">
+        <h1 class="text-white mb-2">{{ movie.title }}</h1>
+        <p class="lead text-white-50 mb-4">
+            {{ movie.description|default:"A detailed description of the movie." }}
+        </p>
+        <!-- Movie Metadata -->
+        <div class="mb-4">
+            <span class="badge bg-secondary me-2 text-black"><i class="fas fa-tags"></i> {{ movie.genres|default:"Unknown Genre" }}</span>
+            <span class="badge bg-secondary me-2 text-black"><i class="fas fa-calendar"></i> {{ movie.year }}</span>
+            <span class="badge bg-secondary me-2 text-black"><i class="fas fa-star"></i> IMDb Rating: {{ movie.initial_rating}}</span>
+        </div>
+        
+        <p class="text-white small mt-4">
+            <!-- New: Director and Cast -->
+            <b>Director:</b> {{ movie.director|default:"N/A" }} <br>
+            <b>Cast:</b> {{ movie.cast|default:"N/A" }}
+        </p>
+        <!-- End Movie Metadata -->
+
+       <img src="{{ movie.poster_url|default:'{% static "images/placeholder.jpg" %}' }}" alt="{{ movie.title }} Poster" height="350px;"><br><br>
+
+        <!-- Action Buttons -->
+        {% if in_watchlist %}
+        <a href="{% url 'remove_from_watchlist' movie.pk %}" class="btn btn-warning me-2"><i class="fas fa-bookmark-slash me-2"></i>Remove from Watchlist</a>
+        {% else %}
+        <a href="{% url 'add_to_watchlist' movie.pk %}" class="btn btn-success me-2"><i class="fas fa-bookmark me-2"></i>Add to Watchlist</a>
+        {% endif %}
+        
+        <a href="#" class="btn btn-outline-info disabled"><i class="fas fa-play me-2"></i>Start Streaming (Mock)</a>
+    </div>
+
+    <!-- Right Column: CF/DL Technical Analysis -->
+    <div class="col-lg-5">
+        <div class="card analysis-panel text-white p-4 rounded-3">
+            <h4 class="text-info mb-3"><i class="fas fa-robot me-2"></i> CF/DL Prediction Breakdown</h4>
+            <hr class="border-info opacity-50">
+            
+            <!-- FIXED: Architecture Diagram - The image trigger tag is now correctly placed in the alt attribute -->
+            <!--<div class="mb-4 p-3 rounded text-center" style="background-color: rgba(0, 0, 0, 0.2); border: 1px dashed #58a6ff;">
+                <p class="small fw-bold text-info mb-1"><i class="fas fa-project-diagram me-1"></i> Model Architecture</p>
+                <div class="text-white-50 smaller mb-0">
+                    <!-- FIX: Added the image trigger back to the alt attribute
+                    <img src="https://placehold.co/400x150/000000/FFFFFF?text=CF/DL+Diagram+Placeholder" 
+                         alt=""
+                         class="img-fluid my-2 rounded"
+                         onerror="this.style.display='none'">
+                    <p class="mt-2 fst-italic text-white-75">
+                        (Diagram should appear above, showing R ≈ P * Qᵀ)
+                    </p>
+                </div>
+            </div>-->
+            <!-- END FIXED SECTION -->
+
+            <!-- Dedicated Terminology Section (Explicit explanation added here) -->
+            <div class="mb-3 p-3 rounded" style="background-color: rgba(255, 255, 255, 0.05); border: 1px solid #333;">
+                <p class="small text-white fw-bold mb-1">
+                    Terminology:
+                </p>
+                <p class="smaller text-white-50 mb-1">
+                    $\mathbf{\hat{r}_{u,i}}$: The <b>predicted affinity score</b> (r-hat) for you ($u$) and this movie ($i$).
+                </p>
+                <p class="smaller text-white-50 mb-0">
+                    $\mathbf{V_u}, \mathbf{V_i}$: The <b>User</b> and <b>Movie Latent Vectors</b> in the model's embedding space.
+                </p>
+            </div>
+            <!-- END Terminology Section -->
+
+            <p class="text-secondary mb-1 fw-bold">
+                Predicted User Affinity Score ($\hat{r}_{u,i}$):
+            </p>
+            <div class="d-flex align-items-center mb-3">
+                <span class="score-highlight">{{ cf_analysis.score }}</span>
+                <span class="ms-3 text-white-50">($\mathbf{V_u} \cdot \mathbf{V_i}$ = Dot Product)</span>
+            </div>
+            
+            <p class="text-secondary mb-1 small fst-italic">{{ cf_analysis.reason }}</p>
+
+            <!-- Vector Display -->
+            <div class="mt-4">
+                <p class="text-warning mb-1">
+                    <i class="fas fa-user me-1"></i> User Latent Vector ($\mathbf{V_u}$) [First 5/{{ cf_analysis.embedding_dim }}]
+                </p>
+                <div class="vector-display p-2 rounded small mb-3">
+                    [{{ cf_analysis.user_vector|join:", " }}... ]
+                </div>
+
+                <p class="text-warning mb-1">
+                    <i class="fas fa-film me-1"></i> Movie Latent Vector ($\mathbf{V_i}$) [First 5/{{ cf_analysis.embedding_dim }}]
+                </p>
+                <div class="vector-display p-2 rounded small">
+                    [{{ cf_analysis.movie_vector|join:", " }}... ]
+                </div>
+            </div>
+
+            <p class="text-secondary mt-3 small mb-0">
+                <b>Technical Note: The prediction score is the result of the dot product between these two vectors. Highly correlated vector dimensions result in a higher score.</b>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

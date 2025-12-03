@@ -1,0 +1,109 @@
+{% extends "movies/base.html" %}
+{% load static %}
+
+{% block title %}DL/CF Recommendation Analysis Report{% endblock %}
+
+{% block content %}
+<style>
+    /* Custom styles for a dark, technical report aesthetic */
+    .tech-bg {
+        background-color: #0d1117; /* GitHub Dark/Terminal Black */
+        color: #c9d1d9; /* Light text */
+    }
+    .data-card {
+        border: 1px solid #30363d;
+        border-left: 5px solid #58a6ff; /* Blue accent for primary data */
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .data-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(88, 166, 255, 0.2);
+    }
+    .metric-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #58a6ff;
+    }
+    .user-profile-summary {
+        border: 1px dashed #30363d;
+        background-color: #161b22;
+    }
+    .section-header {
+        border-bottom: 2px solid #58a6ff;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+<div class="tech-bg p-5 rounded-lg">
+    <h1 class="text-white mb-2 section-header"><i class="fas fa-chart-line me-3 text-info"></i>DL-CF Recommendation Analysis Report</h1>
+    <p class="lead text-white-50 mb-4">
+        This output presents the top-k results derived from the <b>Deep Learning (DL) model</b> using <b>Collaborative Filtering (CF)</b> via Latent Factor Prediction. The ranking is based purely on the predicted user-item affinity score ($\hat{r}_{u,i}$).
+    </p>
+
+    <!-- Recommendation Profile / Input Data Section -->
+    <div class="user-profile-summary p-4 mb-5 rounded shadow-lg">
+        <h5 class="text-info mb-3"><i class="fas fa-terminal me-2"></i> User Latent Input (Contextual Data)</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-secondary mb-1">
+                    <i class="fas fa-tags me-2"></i>Explicit Genres ($\mathbf{G}$): 
+                    <span class="text-white">{{ user_profile.favorite_genres|default:"N/A" }}</span>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p class="text-secondary mb-1">
+                    <i class="fas fa-brain me-2"></i>Implicit Mood ($\mathbf{M}$): 
+                    <span class="text-white">{{ user_profile.current_mood|default:"Neutral" }}</span>
+                </p>
+            </div>
+        </div>
+        <p class="text-secondary mt-3 mb-0 small">
+            <b>Note: User input is used for initial profile seeding, but the final scores are determined by the learned latent user vector $\mathbf{V_u}$.</b>
+        </p>
+    </div>
+
+    <!-- Recommendation Ranking Section -->
+    <h2 class="text-white section-header mb-4"><i class="fas fa-sort-numeric-down me-2 text-warning"></i>Top 5 Prediction Rankings</h2>
+    
+    <div class="row g-4">
+        {% for rec in recommended %}
+        <div class="col-lg-6">
+            <div class="card data-card tech-bg h-100">
+                <div class="card-body p-4">
+                    <span class="badge bg-danger rounded-pill float-end fs-6">RANK {{ forloop.counter }}</span>
+                    <h4 class="card-title text-white mb-1">{{ rec.title }}</h4>
+                    <p class="text-secondary small mb-3"><i class="fas fa-film me-1"></i>Genres: {{ rec.genre }}</p>
+
+                    <!-- Core Metric Display -->
+                    <div class="p-3 mb-3 rounded" style="background-color: rgba(88, 166, 255, 0.1);">
+                        <p class="fw-bold text-info mb-0">Predicted Affinity Score ($\hat{r}_{u,i}$):</p>
+                        <p class="metric-value mb-0">{{ rec.score }}</p>
+                    </div>
+
+                    <!-- Technical Explanation -->
+                    <div class="mt-3">
+                        <p class="fw-bold text-warning mb-1"><i class="fas fa-cogs me-1"></i> Prediction Mechanism:</p>
+                        <code class="d-block p-2 rounded small" style="background-color: #161b22; color: #a9a9a9;">
+                            $$\hat{r}_{u,i} = \mathbf{V_u} \cdot \mathbf{V_i}$$
+                        </code>
+                        <p class="card-text text-secondary mt-2 small mb-0">
+                            <b>Rationale:</b> {{ rec.reason }}
+                        </p>
+                    </div>
+                    <!--<a href="#" class="btn btn-sm btn-outline-info mt-3 disabled"><i class="fas fa-code me-1"></i> View Embedding Vectors</a>-->
+</div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-warning bg-dark text-warning border-warning" role="alert">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                No prediction scores were returned. Please ensure user interaction data (Watchlist/Viewed) is present to train the Collaborative Filtering model.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

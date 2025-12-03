@@ -1,0 +1,38 @@
+{% extends "movies/base.html" %}
+
+{% block title %}Movies in {{ genre }} Category{% endblock %}
+
+{% block content %}
+
+<h1 class="text-white mb-4">
+    <i class="fas fa-tags me-2 text-danger"></i>
+    Browsing Category: <span class="fw-light text-white">{{ genre }}</span>
+</h1>
+
+{% if results %}
+    <p class="text-white">{{ results.count }} movies found.</p>
+
+    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4">
+        {% for movie in results %}
+        <div class="col">
+            <div class="card h-100 shadow-lg">
+               <a href="{% url 'movie_detail' movie.pk %}"><img src="{{ movie.poster_url|default:'{% static "images/placeholder.jpg" %}' }}" 
+                     class="card-img-top movie-poster" 
+                     alt="{{ movie.title }} Poster"></a> 
+                <div class="card-body">
+                    <h6 class="card-title text-white fw-bold text-truncate">{{ movie.title }}</h6>
+                    <p class="card-text small text-white mb-2">
+                        <i class="fas fa-star text-warning me-1"></i> {{ movie.initial_rating|default:"N/A" }} 
+                        | {{ movie.year|default:"N/A" }}
+                    </p>
+                    <!--<a href="{% url 'movie_detail' movie.pk %}" class="btn btn-sm btn-danger w-100">View Details</a>-->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-white-50 mt-5">No movies found in the category **{{ genre }}**.</p>
+{% endif %}
+
+{% endblock %}

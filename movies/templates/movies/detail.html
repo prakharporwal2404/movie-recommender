@@ -1,0 +1,65 @@
+{% extends "movies/base.html" %}
+{% load static %}
+
+{% block title %}{{ movie.title }}{% endblock %}
+
+{% block content %}
+
+<div class="row g-5 mt-5">
+
+    <!-- COLUMN 1: MOVIE POSTER & WATCHLIST BUTTON (col-md-4) -->
+    <div class="col-md-4">
+        
+        <!-- Poster Card -->
+        <div class="card shadow-lg bg-dark p-2">
+            <img src="{{ movie.poster_url|default:'{% static "images/placeholder.jpg" %}' }}"
+                 class="img-fluid rounded"
+                 alt="{{ movie.title }} Poster"
+                 style="max-height: 500px; object-fit: cover;">
+        </div>
+        
+        <!-- === WATCHLIST BUTTON HERE (The selected code, now integrated) === -->
+        {% if user.is_authenticated %}
+            <div class="d-grid mt-3">
+                {% if in_watchlist %}
+                    <a href="{% url 'remove_from_watchlist' movie_pk=movie.pk %}" class="btn btn-warning btn-lg fw-bold">
+                        <i class="fas fa-bookmark me-2"></i> Remove from Watchlist
+                    </a>
+                {% else %}
+                    <a href="{% url 'add_to_watchlist' movie_pk=movie.pk %}" class="btn btn-danger btn-lg fw-bold">
+                        <i class="far fa-bookmark me-2"></i> Add to Watchlist
+                    </a>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="d-grid mt-3">
+                <a href="{% url 'login' %}" class="btn btn-secondary btn-lg fw-bold">
+                    <i class="fas fa-sign-in-alt me-2"></i> Login to add to Watchlist
+                </a>
+            </div>
+        {% endif %}
+        <!-- === END WATCHLIST BUTTON === -->
+
+    </div>
+
+    <!-- COLUMN 2: MOVIE INFO (col-md-8) -->
+    <div class="col-md-8">
+        <h1 class="display-4 fw-bold text-white">{{ movie.title }}</h1>
+        <div class="mb-3">
+            <span class="badge bg-danger fs-6 me-2"><i class="fas fa-calendar-alt me-1 text-black"></i>{{ movie.year|default:"N/A" }}</span>
+            <span class="badge bg-secondary fs-6 me-2"><i class="fas fa-star text-warning me-1 text-black"></i>{{ movie.initial_rating|default:"N/A" }}</span>
+        </div>
+
+        <p class="lead text-white-75">{{ movie.description|default:"No description available." }}</p>
+
+        <p class="text-white small mt-4">
+            <b>Director:</b> {{ movie.director|default:"N/A" }} <br>
+            <b>Cast:</b> {{ movie.cast|default:"N/A" }}
+        </p>
+
+        <!-- You can add the rating form or community stats here -->
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<a href="{% url 'home' %}" class="btn btn-link">&larr; Home</a>
+<h3>Your Recommendations</h3>
+<div class="row">
+  {% for item in recs %}
+    <div class="col-md-4 mt-3">
+      <div class="card p-2">
+        <h5>{{ item.movie.title }}</h5>
+        <p><small>{{ item.movie.genres }} • {{ item.movie.year }}</small></p>
+        <p>{{ item.movie.description|truncatewords:20 }}</p>
+        <p><small>score: {{ item.score|floatformat:2 }}</small></p>
+        <a href="{% url 'movie_detail' item.movie.id %}" class="btn btn-sm btn-primary">View</a>
+      </div>
+    </div>
+  {% empty %}
+    <p>No recommendations yet. View some movies to build your taste.</p>
+  {% endfor %}
+</div>

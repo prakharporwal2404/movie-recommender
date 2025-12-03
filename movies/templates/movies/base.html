@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Movie Recommender{% endblock %}</title>
+
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* General dark theme styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A; /* Deep Slate Blue */
+            color: #E2E8F0; /* Light gray text */
+        }
+
+        /* Custom Primary Color (Vibrant Red) */
+        .bg-primary, .btn-primary {
+            background-color: #DC3545 !important; /* Bootstrap Danger Red */
+            border-color: #DC3545 !important;
+        }
+        .btn-primary:hover {
+            background-color: #C82333 !important;
+            border-color: #C82333 !important;
+        }
+        .text-primary {
+            color: #DC3545 !important;
+        }
+        .border-primary {
+            border-color: #DC3545 !important;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.95); /* Slightly translucent */
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #FFF !important;
+        }
+        .nav-link {
+            color: #A0AEC0 !important; /* Gray */
+            font-weight: 500;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .nav-link:hover {
+            color: #DC3545 !important; /* Red highlight */
+            transform: translateY(-1px);
+        }
+        .dropdown-menu {
+            background-color: #1A202C; /* Darker than navbar */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .dropdown-item {
+            color: #E2E8F0;
+        }
+        .dropdown-item:hover {
+            background-color: #2D3748;
+            color: #DC3545;
+        }
+
+        /* Card and input styling for the dark theme */
+        .card {
+            background-color: #1A202C; /* Slightly lighter dark for contrast */
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        .form-control, .form-select {
+            background-color: #2D3748;
+            border-color: #4A5568;
+            color: #E2E8F0;
+        }
+        .form-control:focus, .form-select:focus {
+            background-color: #2D3748;
+            border-color: #DC3545;
+            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+            color: #E2E8F0;
+        }
+        .movie-card-hover:hover {
+            transform: scale(1.02);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid container-xl">
+            <!-- Brand Logo/Title -->
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <i class="fas fa-play-circle text-primary me-2"></i>Movie Recommender
+            </a>
+            
+            <!-- Toggler for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'recommend'%}"><i class="fas fa-th me-1"></i> Recommendations</a>
+                    </li>
+                </ul>
+
+                <!-- Search Form -->
+                <form class="d-flex me-3" role="search">
+                    <div class="input-group">
+                        <input class="form-control form-control-sm" type="search" placeholder="Search movies..." aria-label="Search">
+                        <button class="btn btn-primary btn-sm" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+
+                <!-- Auth/Profile Links -->
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i> {{ user.username }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-sliders-h me-2"></i> Profile & Preferences</a></li>
+                                <li><a class="dropdown-item" href=""><i class="fas fa-bookmark me-2"></i> My Watchlist</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-in-alt me-1"></i> Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary btn-sm ms-2" href="{% url 'register' %}"><i class="fas fa-user-plus me-1"></i> Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="container container-xl mt-5 mb-5 p-3">
+        {% block content %}
+        <!-- Content will be inserted here -->
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white-50 py-3 mt-5">
+        <div class="container">
+            <p class="mb-0 small">© 2024 Movie Recommender | Built with Django & Deep Learning</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

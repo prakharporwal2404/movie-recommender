@@ -1,0 +1,574 @@
+{"movies":
+[
+  {
+    "title": "Inception",
+    "year": 2010,
+    "genres": "Sci-Fi, Action",
+    "description": "A thief enters dreams to steal secrets and plant ideas.",
+    "cast": "Leonardo DiCaprio, Joseph Gordon-Levitt",
+    "director": "Christopher Nolan",
+    "rating": 8.8,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg"
+  },
+  {
+    "title": "Interstellar",
+    "year": 2014,
+    "genres": "Sci-Fi, Drama",
+    "description": "A team travels through a wormhole to find a new home for humanity.",
+    "cast": "Matthew McConaughey, Anne Hathaway",
+    "director": "Christopher Nolan",
+    "rating": 8.6,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
+  },
+  {
+    "title": "The Dark Knight",
+    "year": 2008,
+    "genres": "Action, Crime",
+    "description": "Batman faces the Joker, a criminal mastermind causing chaos in Gotham.",
+    "cast": "Christian Bale, Heath Ledger",
+    "director": "Christopher Nolan",
+    "rating": 9.0,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_(2008_film).jpg"
+  },
+  {
+    "title": "Fight Club",
+    "year": 1999,
+    "genres": "Drama",
+    "description": "An insomniac forms an underground fight club with a soap salesman.",
+    "cast": "Brad Pitt, Edward Norton",
+    "director": "David Fincher",
+    "rating": 8.8,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg"
+  },
+  {
+    "title": "The Matrix",
+    "year": 1999,
+    "genres": "Sci-Fi, Action",
+    "description": "A hacker discovers the world is a simulated reality.",
+    "cast": "Keanu Reeves, Laurence Fishburne",
+    "director": "Wachowskis",
+    "rating": 8.7,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg"
+  },
+  {
+    "title": "Titanic",
+    "year": 1997,
+    "genres": "Romance, Drama",
+    "description": "Two lovers meet aboard the doomed RMS Titanic.",
+    "cast": "Leonardo DiCaprio, Kate Winslet",
+    "director": "James Cameron",
+    "rating": 7.9,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/2/22/Titanic_poster.jpg"
+  },
+  {
+    "title": "Avatar",
+    "year": 2009,
+    "genres": "Sci-Fi, Adventure",
+    "description": "A marine on an alien world is torn between duty and empathy.",
+    "cast": "Sam Worthington, Zoe Saldana",
+    "director": "James Cameron",
+    "rating": 7.8,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/b/b0/Avatar-Teaser-Poster.jpg"
+  },
+  {
+    "title": "The Avengers",
+    "year": 2012,
+    "genres": "Action, Superhero",
+    "description": "Earth's mightiest heroes team up to stop Loki.",
+    "cast": "Robert Downey Jr., Chris Evans, Scarlett Johansson",
+    "director": "Joss Whedon",
+    "rating": 8.0,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_(2012_film)_poster.jpg"
+  },
+  {
+    "title": "Iron Man",
+    "year": 2008,
+    "genres": "Action, Sci-Fi",
+    "description": "A billionaire builds an armored suit to fight evil.",
+    "cast": "Robert Downey Jr.",
+    "director": "Jon Favreau",
+    "rating": 7.9,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/0/02/Iron_Man_%282008_film%29_poster.jpg"
+  },
+  {
+    "title": "The Wolf of Wall Street",
+    "year": 2013,
+    "genres": "Biography, Crime",
+    "description": "The rise and fall of stockbroker Jordan Belfort.",
+    "cast": "Leonardo DiCaprio, Jonah Hill",
+    "director": "Martin Scorsese",
+    "rating": 8.2,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/1/1f/WallStreet2013poster.jpg"
+  },
+  {
+    "title": "Joker",
+    "year": 2019,
+    "genres": "Crime, Drama",
+    "description": "A mentally unstable man turns into Gotham’s infamous criminal.",
+    "cast": "Joaquin Phoenix",
+    "director": "Todd Phillips",
+    "rating": 8.4,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/e/e1/Joker_%282019_film%29_poster.jpg"
+  },
+  {
+    "title": "The Shawshank Redemption",
+    "year": 1994,
+    "genres": "Drama",
+    "description": "A banker is wrongly imprisoned and forms a bond with a fellow inmate.",
+    "cast": "Tim Robbins, Morgan Freeman",
+    "director": "Frank Darabont",
+    "rating": 9.3,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg"
+  },
+  {
+    "title": "Forrest Gump",
+    "year": 1994,
+    "genres": "Drama",
+    "description": "A simple man influences major historical events.",
+    "cast": "Tom Hanks",
+    "director": "Robert Zemeckis",
+    "rating": 8.8,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg"
+  },
+  {
+    "title": "Gladiator",
+    "year": 2000,
+    "genres": "Action, Drama",
+    "description": "A Roman general seeks revenge for his murdered family.",
+    "cast": "Russell Crowe",
+    "director": "Ridley Scott",
+    "rating": 8.5,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/8/8d/Gladiator_ver1.jpg"
+  },
+  {
+    "title": "The Godfather",
+    "year": 1972,
+    "genres": "Crime, Drama",
+    "description": "The aging patriarch of a crime dynasty transfers control to his son.",
+    "cast": "Marlon Brando, Al Pacino",
+    "director": "Francis Ford Coppola",
+    "rating": 9.2,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg"
+  },
+  {
+    "title": "The Godfather Part II",
+    "year": 1974,
+    "genres": "Crime, Drama",
+    "description": "The story of Vito Corleone's rise and Michael's fall.",
+    "cast": "Al Pacino, Robert De Niro",
+    "director": "Francis Ford Coppola",
+    "rating": 9.0,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/0/03/Godfather_part_ii.jpg"
+  },
+  {
+    "title": "Pulp Fiction",
+    "year": 1994,
+    "genres": "Crime, Drama",
+    "description": "Interwoven stories of crime and redemption.",
+    "cast": "John Travolta, Samuel L. Jackson",
+    "director": "Quentin Tarantino",
+    "rating": 8.9,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/3/3b/Pulp_Fiction_%281994%29_poster.jpg"
+  },
+  {
+    "title": "The Social Network",
+    "year": 2010,
+    "genres": "Drama",
+    "description": "The rise of Facebook and legal battles around it.",
+    "cast": "Jesse Eisenberg, Andrew Garfield",
+    "director": "David Fincher",
+    "rating": 7.8,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/6/6b/Social_network_film_poster.jpg"
+  },
+  {
+    "title": "The Pursuit of Happyness",
+    "year": 2006,
+    "genres": "Biography, Drama",
+    "description": "A struggling father fights homelessness while raising his son.",
+    "cast": "Will Smith, Jaden Smith",
+    "director": "Gabriele Muccino",
+    "rating": 8.0,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/8/81/Poster-pursuithappyness.jpg"
+  },
+  {
+    "title": "Mad Max: Fury Road",
+    "year": 2015,
+    "genres": "Action, Adventure",
+    "description": "A woman rebels against a tyrant in a post-apocalyptic desert.",
+    "cast": "Tom Hardy, Charlize Theron",
+    "director": "George Miller",
+    "rating": 8.1,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/6/6e/Mad_Max_Fury_Road.jpg"
+  },
+  {
+    "title": "Dunkirk",
+    "year": 2017,
+    "genres": "War, Drama",
+    "description": "Allied soldiers are evacuated during WWII.",
+    "cast": "Fionn Whitehead, Tom Hardy",
+    "director": "Christopher Nolan",
+    "rating": 7.9,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/1/15/Dunkirk_Film_poster.jpg"
+  },
+  {
+    "title": "Whiplash",
+    "year": 2014,
+    "genres": "Drama, Music",
+    "description": "A young drummer is pushed to his limits by a ruthless instructor.",
+    "cast": "Miles Teller, J.K. Simmons",
+    "director": "Damien Chazelle",
+    "rating": 8.5,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/0/01/Whiplash_poster.jpg"
+  },
+  {
+    "title": "La La Land",
+    "year": 2016,
+    "genres": "Musical, Romance",
+    "description": "A jazz musician and an actress fall in love in Los Angeles.",
+    "cast": "Ryan Gosling, Emma Stone",
+    "director": "Damien Chazelle",
+    "rating": 8.0,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/0/06/La_La_Land_%28film%29.png"
+  },
+  {
+    "title": "Deadpool",
+    "year": 2016,
+    "genres": "Action, Comedy",
+    "description": "A mercenary becomes an antihero after a rogue experiment.",
+    "cast": "Ryan Reynolds",
+    "director": "Tim Miller",
+    "rating": 8.0,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/23/Deadpool_%282016_poster%29.png/250px-Deadpool_%282016_poster%29.png"
+  },
+  {
+    "title": "Black Panther",
+    "year": 2018,
+    "genres": "Action, Superhero",
+    "description": "T'Challa becomes king and defends Wakanda from threats.",
+    "cast": "Chadwick Boseman, Michael B. Jordan",
+    "director": "Ryan Coogler",
+    "rating": 7.3,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/0/0c/Black_Panther_film_poster.jpg"
+  },
+  {
+    "title": "Shutter Island",
+    "year": 2010,
+    "genres": "Mystery, Thriller",
+    "description": "Two marshals investigate the disappearance of a patient.",
+    "cast": "Leonardo DiCaprio, Mark Ruffalo",
+    "director": "Martin Scorsese",
+    "rating": 8.2,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/7/76/Shutterislandposter.jpg"
+  },
+  {
+    "title": "Parasite",
+    "year": 2019,
+    "genres": "Thriller, Drama",
+    "description": "A poor family infiltrates a rich household with dark consequences.",
+    "cast": "Song Kang-ho, Choi Woo-shik",
+    "director": "Bong Joon-ho",
+    "rating": 8.6,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/5/53/Parasite_(2019_film)_poster.jpg"
+  },
+  {
+    "title": "John Wick",
+    "year": 2014,
+    "genres": "Action, Thriller",
+    "description": "A retired hitman seeks revenge for the death of his dog.",
+    "cast": "Keanu Reeves",
+    "director": "Chad Stahelski",
+    "rating": 7.4,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/9/98/John_Wick_TeaserPoster.jpg"
+  },
+  {
+    "title": "The Revenant",
+    "year": 2015,
+    "genres": "Adventure, Drama",
+    "description": "A frontiersman seeks survival and vengeance.",
+    "cast": "Leonardo DiCaprio, Tom Hardy",
+    "director": "Alejandro G. Iñárritu",
+    "rating": 8.0,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/b/b6/The_Revenant_2015_film_poster.jpg"
+  },
+  {
+    "title": "The Prestige",
+    "year": 2006,
+    "genres": "Drama, Mystery",
+    "description": "Two magicians engage in a deadly rivalry.",
+    "cast": "Hugh Jackman, Christian Bale",
+    "director": "Christopher Nolan",
+    "rating": 8.5,
+    "poster_url": "https://upload.wikimedia.org/wikipedia/en/d/d2/Prestige_poster.jpg"
+  },
+  {
+      "title": "The Dark Knight",
+      "year": 2008,
+      "genres": ["Action", "Crime", "Drama"],
+      "rating": 9.0,
+      "director": "Christopher Nolan",
+      "cast": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg"
+    },
+    {
+      "title": "Inception",
+      "year": 2010,
+      "genres": ["Sci-Fi", "Action", "Thriller"],
+      "rating": 8.8,
+      "director": "Christopher Nolan",
+      "cast": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg"
+    },
+    {
+      "title": "Interstellar",
+      "year": 2014,
+      "genres": ["Sci-Fi", "Drama"],
+      "rating": 8.7,
+      "director": "Christopher Nolan",
+      "cast": ["Matthew McConaughey", "Anne Hathaway"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
+    },
+    {
+      "title": "The Shawshank Redemption",
+      "year": 1994,
+      "genres": ["Drama"],
+      "rating": 9.3,
+      "director": "Frank Darabont",
+      "cast": ["Tim Robbins", "Morgan Freeman"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg"
+    },
+    {
+      "title": "Fight Club",
+      "year": 1999,
+      "genres": ["Drama"],
+      "rating": 8.8,
+      "director": "David Fincher",
+      "cast": ["Brad Pitt", "Edward Norton"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg"
+    },
+    {
+      "title": "Forrest Gump",
+      "year": 1994,
+      "genres": ["Drama", "Romance"],
+      "rating": 8.8,
+      "director": "Robert Zemeckis",
+      "cast": ["Tom Hanks", "Robin Wright"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg"
+    },
+    {
+      "title": "The Matrix",
+      "year": 1999,
+      "genres": ["Sci-Fi", "Action"],
+      "rating": 8.7,
+      "director": "Lana Wachowski, Lilly Wachowski",
+      "cast": ["Keanu Reeves", "Laurence Fishburne"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/d/db/The_Matrix.png"
+    },
+    {
+      "title": "Gladiator",
+      "year": 2000,
+      "genres": ["Action", "Drama"],
+      "rating": 8.5,
+      "director": "Ridley Scott",
+      "cast": ["Russell Crowe", "Joaquin Phoenix"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png"
+    },
+    {
+      "title": "The Godfather",
+      "year": 1972,
+      "genres": ["Crime", "Drama"],
+      "rating": 9.2,
+      "director": "Francis Ford Coppola",
+      "cast": ["Marlon Brando", "Al Pacino"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg"
+    },
+    {
+      "title": "The Godfather Part II",
+      "year": 1974,
+      "genres": ["Crime", "Drama"],
+      "rating": 9.0,
+      "director": "Francis Ford Coppola",
+      "cast": ["Al Pacino", "Robert De Niro"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/0/03/Godfather_part_ii.jpg"
+    },
+    {
+      "title": "Avatar",
+      "year": 2009,
+      "genres": ["Sci-Fi", "Adventure"],
+      "rating": 7.8,
+      "director": "James Cameron",
+      "cast": ["Sam Worthington", "Zoe Saldana"],
+      "poster_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5nHjXip-oYHANhJvoUCJ0gqZtjUAimh8abQ&s"
+    },
+    {
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "genres": ["Action", "Sci-Fi"],
+      "rating": 8.4,
+      "director": "Anthony & Joe Russo",
+      "cast": ["Robert Downey Jr.", "Chris Evans"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
+    },
+    {
+      "title": "Iron Man",
+      "year": 2008,
+      "genres": ["Action", "Sci-Fi"],
+      "rating": 7.9,
+      "director": "Jon Favreau",
+      "cast": ["Robert Downey Jr.", "Gwyneth Paltrow"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/0/02/Iron_Man_%282008_film%29_poster.jpg"
+    },
+    {
+      "title": "Black Panther",
+      "year": 2018,
+      "genres": ["Action", "Adventure"],
+      "rating": 7.3,
+      "director": "Ryan Coogler",
+      "cast": ["Chadwick Boseman", "Michael B. Jordan"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/d/d6/Black_Panther_%28film%29_poster.jpg"
+    },
+    {
+      "title": "Joker",
+      "year": 2019,
+      "genres": ["Crime", "Drama"],
+      "rating": 8.4,
+      "director": "Todd Phillips",
+      "cast": ["Joaquin Phoenix", "Robert De Niro"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/e/e1/Joker_%282019_film%29_poster.jpg"
+    },
+    {
+      "title": "Parasite",
+      "year": 2019,
+      "genres": ["Drama", "Thriller"],
+      "rating": 8.5,
+      "director": "Bong Joon-ho",
+      "cast": ["Song Kang-ho", "Lee Sun-kyun"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/5/53/Parasite_%282019_film%29.png"
+    },
+    {
+      "title": "Dune",
+      "year": 2021,
+      "genres": ["Sci-Fi", "Adventure"],
+      "rating": 8.0,
+      "director": "Denis Villeneuve",
+      "cast": ["Timothée Chalamet", "Zendaya"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/8/8e/Dune_%282021_film%29.jpg"
+    },
+    {
+      "title": "Dune: Part Two",
+      "year": 2024,
+      "genres": ["Sci-Fi", "Action"],
+      "rating": 8.8,
+      "director": "Denis Villeneuve",
+      "cast": ["Timothée Chalamet", "Austin Butler"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg"
+    },
+    {
+      "title": "Oppenheimer",
+      "year": 2023,
+      "genres": ["Biography", "Drama"],
+      "rating": 8.3,
+      "director": "Christopher Nolan",
+      "cast": ["Cillian Murphy", "Emily Blunt"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/4/4a/Oppenheimer_%28film%29.jpg"
+    },
+    {
+      "title": "Barbie",
+      "year": 2023,
+      "genres": ["Comedy", "Fantasy"],
+      "rating": 6.8,
+      "director": "Greta Gerwig",
+      "cast": ["Margot Robbie", "Ryan Gosling"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/0/0b/Barbie_2023_poster.jpg"
+    },
+    {
+      "title": "La La Land",
+      "year": 2016,
+      "genres": ["Drama", "Romance"],
+      "rating": 8.0,
+      "director": "Damien Chazelle",
+      "cast": ["Ryan Gosling", "Emma Stone"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/a/ab/La_La_Land_%28film%29.png"
+    },
+    {
+      "title": "Whiplash",
+      "year": 2014,
+      "genres": ["Drama"],
+      "rating": 8.5,
+      "director": "Damien Chazelle",
+      "cast": ["Miles Teller", "J.K. Simmons"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/0/01/Whiplash_poster.jpg"
+    },
+    {
+      "title": "The Social Network",
+      "year": 2010,
+      "genres": ["Drama"],
+      "rating": 7.8,
+      "director": "David Fincher",
+      "cast": ["Jesse Eisenberg", "Andrew Garfield"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/The_Social_Network_film_poster.png/250px-The_Social_Network_film_poster.png"
+    },
+    {
+      "title": "The Wolf of Wall Street",
+      "year": 2013,
+      "genres": ["Biography", "Comedy", "Crime"],
+      "rating": 8.2,
+      "director": "Martin Scorsese",
+      "cast": ["Leonardo DiCaprio", "Jonah Hill"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/The_Wolf_of_Wall_Street_%282013%29.png/250px-The_Wolf_of_Wall_Street_%282013%29.png"
+    },
+    {
+      "title": "Shutter Island",
+      "year": 2010,
+      "genres": ["Mystery", "Thriller"],
+      "rating": 8.2,
+      "director": "Martin Scorsese",
+      "cast": ["Leonardo DiCaprio", "Mark Ruffalo"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/7/76/Shutterislandposter.jpg"
+    },
+    {
+      "title": "The Avengers",
+      "year": 2012,
+      "genres": ["Action", "Sci-Fi"],
+      "rating": 8.0,
+      "director": "Joss Whedon",
+      "cast": ["Robert Downey Jr.", "Scarlett Johansson"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg"
+    },
+    {
+      "title": "Logan",
+      "year": 2017,
+      "genres": ["Action", "Drama"],
+      "rating": 8.1,
+      "director": "James Mangold",
+      "cast": ["Hugh Jackman", "Patrick Stewart"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/3/37/Logan_2017_poster.jpg"
+    },
+    {
+      "title": "Mad Max: Fury Road",
+      "year": 2015,
+      "genres": ["Action", "Adventure"],
+      "rating": 8.1,
+      "director": "George Miller",
+      "cast": ["Tom Hardy", "Charlize Theron"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/6/6e/Mad_Max_Fury_Road.jpg"
+    },
+    {
+      "title": "The Revenant",
+      "year": 2015,
+      "genres": ["Adventure", "Drama"],
+      "rating": 8.0,
+      "director": "Alejandro G. Iñárritu",
+      "cast": ["Leonardo DiCaprio", "Tom Hardy"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/b/b6/The_Revenant_2015_film_poster.jpg"
+    },
+    {
+      "title": "Titanic",
+      "year": 1997,
+      "genres": ["Drama", "Romance"],
+      "rating": 7.9,
+      "director": "James Cameron",
+      "cast": ["Leonardo DiCaprio", "Kate Winslet"],
+      "poster_url": "https://upload.wikimedia.org/wikipedia/en/1/18/Titanic_%281997_film%29_poster.png"
+    }
+  ]
+}
